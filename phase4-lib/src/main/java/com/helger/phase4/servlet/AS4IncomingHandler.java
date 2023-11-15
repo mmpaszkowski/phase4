@@ -526,7 +526,7 @@ public class AS4IncomingHandler
         // href
         final Ebms3PartInfo aPartInfo = CollectionHelper.findFirst (aUserMessage.getPayloadInfo ().getPartInfo (),
                                                                     x -> x.getHref () != null &&
-                                                                         x.getHref ().contains (sAttachmentContentID));
+                                                                            (x.getHref ().equals(sAttachmentContentID) || x.getHref ().equals("cid:" + sAttachmentContentID)));
         if (aPartInfo != null && aPartInfo.getPartProperties () != null)
         {
           // Find MimeType property
